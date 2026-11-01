@@ -81,7 +81,11 @@ ATURAN UTAMA:
       model: 'gemini-3.8-flash',
       contents: prompt,
       config: {
-        temperature: 0.7,
+  thinkingConfig: {
+    thinkingLevel: "low"
+  },
+  responseMimeType: "application/json",
+  maxOutputTokens: 2500
       }
     });
 
