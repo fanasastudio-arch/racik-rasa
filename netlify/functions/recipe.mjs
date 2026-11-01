@@ -38,8 +38,14 @@ export default async (req) => {
     const safeEquipment = Array.isArray(equipment) ? equipment.slice(0, 20) : [];
 
     // Inisialisasi Google GenAI SDK
-    const ai = new GoogleGenAI({ apiKey });
-
+    const ai = new GoogleGenAI({
+  apiKey,
+  httpOptions: {
+    retryOptions: {
+      attempts: 1
+    }
+  }
+});
     // Susun instruksi prompt untuk Gemini
     const prompt = `
 Bertindaklah sebagai seorang chef profesional yang ramah dan ahli dalam meracik resep masakan rumahan Indonesia maupun internasional.
